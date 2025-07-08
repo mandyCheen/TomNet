@@ -1,0 +1,10 @@
+aidra
+aenjaris
+meterpreter
+merlin
+rozena
+sickabs
+kinsing
+dnscat
+fakeapp
+psybnc

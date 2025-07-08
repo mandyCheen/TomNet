@@ -1,0 +1,112 @@
+======================================
+Experiment Set: 5way_5shot
+Decision Network: ProtoNet
+Pretrain: with_pretrain
+Timestamp: Fri Jan  3 05:49:31 PM CST 2025
+======================================
+Successfully completed the experiment
+======================================
+Experiment Set: 5way_5shot
+Decision Network: ProtoNet
+Pretrain: without_pretrain
+Timestamp: Sat Jan  4 12:34:17 AM CST 2025
+======================================
+Successfully completed the experiment
+======================================
+Experiment Set: 5way_5shot
+Decision Network: NnNet
+Pretrain: with_pretrain
+Timestamp: Sat Jan  4 01:09:21 AM CST 2025
+======================================
+Successfully completed the experiment
+======================================
+Experiment Set: 5way_5shot
+Decision Network: NnNet
+Pretrain: without_pretrain
+Timestamp: Sat Jan  4 01:43:09 AM CST 2025
+======================================
+Successfully completed the experiment
+======================================
+Experiment Set: 5way_10shot
+Decision Network: ProtoNet
+Pretrain: with_pretrain
+Timestamp: Sat Jan  4 03:00:54 AM CST 2025
+======================================
+Successfully completed the experiment
+======================================
+Experiment Set: 5way_10shot
+Decision Network: ProtoNet
+Pretrain: without_pretrain
+Timestamp: Sat Jan  4 05:34:51 AM CST 2025
+======================================
+Successfully completed the experiment
+======================================
+Experiment Set: 5way_10shot
+Decision Network: NnNet
+Pretrain: with_pretrain
+Timestamp: Sat Jan  4 11:38:53 AM CST 2025
+======================================
+Successfully completed the experiment
+======================================
+Experiment Set: 5way_10shot
+Decision Network: NnNet
+Pretrain: without_pretrain
+Timestamp: Sat Jan  4 12:12:58 PM CST 2025
+======================================
+Successfully completed the experiment
+======================================
+Experiment Set: 10way_5shot
+Decision Network: ProtoNet
+Pretrain: with_pretrain
+Timestamp: Sat Jan  4 12:42:00 PM CST 2025
+======================================
+Successfully completed the experiment
+======================================
+Experiment Set: 10way_5shot
+Decision Network: ProtoNet
+Pretrain: without_pretrain
+Timestamp: Sun Jan  5 12:13:07 AM CST 2025
+======================================
+Successfully completed the experiment
+======================================
+Experiment Set: 10way_5shot
+Decision Network: NnNet
+Pretrain: with_pretrain
+Timestamp: Sun Jan  5 11:51:12 AM CST 2025
+======================================
+Successfully completed the experiment
+======================================
+Experiment Set: 10way_5shot
+Decision Network: NnNet
+Pretrain: without_pretrain
+Timestamp: Sun Jan  5 02:34:20 PM CST 2025
+======================================
+Successfully completed the experiment
+======================================
+Experiment Set: 10way_10shot
+Decision Network: ProtoNet
+Pretrain: with_pretrain
+Timestamp: Sun Jan  5 03:23:24 PM CST 2025
+======================================
+Successfully completed the experiment
+======================================
+Experiment Set: 10way_10shot
+Decision Network: ProtoNet
+Pretrain: without_pretrain
+Timestamp: Mon Jan  6 03:52:45 AM CST 2025
+======================================
+Successfully completed the experiment
+======================================
+Experiment Set: 10way_10shot
+Decision Network: NnNet
+Pretrain: with_pretrain
+Timestamp: Mon Jan  6 03:35:15 PM CST 2025
+======================================
+Successfully completed the experiment
+======================================
+Experiment Set: 10way_10shot
+Decision Network: NnNet
+Pretrain: without_pretrain
+Timestamp: Mon Jan  6 05:19:31 PM CST 2025
+======================================
+Successfully completed the experiment

@@ -1,0 +1,183 @@
+2025-06-05 17:06:39,275 - process_4 - INFO - Process 4 started on cuda:4
+2025-06-05 17:06:40,789 - process_4 - INFO - Process 4 - Task 1/45 - seed: 7, exp: 5way_5shot, lambda: 0.1
+2025-06-05 17:06:40,975 - process_4 - INFO - Process 4 - Loading dataset
+2025-06-05 17:06:41,000 - process_4 - INFO - Process 4 - Starting training
+2025-06-05 20:13:23,776 - process_4 - INFO - Process 4 - Starting testing
+2025-06-05 20:26:26,823 - process_4 - INFO - Process 4 - Task 1/45 completed successfully
+2025-06-05 20:26:26,824 - process_4 - INFO - Process 4 - Task 2/45 - seed: 7, exp: 5way_5shot, lambda: 0.2
+2025-06-05 20:26:26,947 - process_4 - INFO - Process 4 - Starting training
+2025-06-05 23:15:43,418 - process_4 - INFO - Process 4 - Starting testing
+2025-06-05 23:28:45,306 - process_4 - INFO - Process 4 - Task 2/45 completed successfully
+2025-06-05 23:28:45,306 - process_4 - INFO - Process 4 - Task 3/45 - seed: 7, exp: 5way_5shot, lambda: 0.3
+2025-06-05 23:28:45,412 - process_4 - INFO - Process 4 - Starting training
+2025-06-06 01:29:56,698 - process_4 - INFO - Process 4 - Starting testing
+2025-06-06 01:43:18,517 - process_4 - INFO - Process 4 - Task 3/45 completed successfully
+2025-06-06 01:43:18,518 - process_4 - INFO - Process 4 - Task 4/45 - seed: 7, exp: 5way_5shot, lambda: 0.4
+2025-06-06 01:43:18,679 - process_4 - INFO - Process 4 - Starting training
+2025-06-06 05:43:38,581 - process_4 - INFO - Process 4 - Starting testing
+2025-06-06 05:56:59,305 - process_4 - INFO - Process 4 - Task 4/45 completed successfully
+2025-06-06 05:56:59,307 - process_4 - INFO - Process 4 - Task 5/45 - seed: 7, exp: 5way_5shot, lambda: 0.6
+2025-06-06 05:56:59,423 - process_4 - INFO - Process 4 - Starting training
+2025-06-06 08:40:05,180 - process_4 - INFO - Process 4 - Starting testing
+2025-06-06 08:53:14,677 - process_4 - INFO - Process 4 - Task 5/45 completed successfully
+2025-06-06 08:53:14,677 - process_4 - INFO - Process 4 - Task 6/45 - seed: 7, exp: 5way_5shot, lambda: 0.7
+2025-06-06 08:53:14,942 - process_4 - INFO - Process 4 - Starting training
+2025-06-06 12:03:05,917 - process_4 - INFO - Process 4 - Starting testing
+2025-06-06 12:16:20,412 - process_4 - INFO - Process 4 - Task 6/45 completed successfully
+2025-06-06 12:16:20,415 - process_4 - INFO - Process 4 - Task 7/45 - seed: 7, exp: 5way_5shot, lambda: 0.8
+2025-06-06 12:16:20,529 - process_4 - INFO - Process 4 - Starting training
+2025-06-06 14:13:38,088 - process_4 - INFO - Process 4 - Starting testing
+2025-06-06 14:26:46,366 - process_4 - INFO - Process 4 - Task 7/45 completed successfully
+2025-06-06 14:26:46,367 - process_4 - INFO - Process 4 - Task 8/45 - seed: 7, exp: 5way_5shot, lambda: 0.9
+2025-06-06 14:26:46,539 - process_4 - INFO - Process 4 - Starting training
+2025-06-06 16:32:22,094 - process_4 - INFO - Process 4 - Starting testing
+2025-06-06 16:45:36,681 - process_4 - INFO - Process 4 - Task 8/45 completed successfully
+2025-06-06 16:45:36,683 - process_4 - INFO - Process 4 - Task 9/45 - seed: 7, exp: 5way_5shot, lambda: 1.0
+2025-06-06 16:45:36,987 - process_4 - INFO - Process 4 - Starting training
+2025-06-06 19:51:41,970 - process_4 - INFO - Process 4 - Starting testing
+2025-06-06 20:04:59,872 - process_4 - INFO - Process 4 - Task 9/45 completed successfully
+2025-06-06 20:04:59,873 - process_4 - INFO - Process 4 - Task 10/45 - seed: 7, exp: 5way_10shot, lambda: 0.1
+2025-06-06 20:05:00,043 - process_4 - INFO - Process 4 - Starting training
+2025-06-06 23:44:37,033 - process_4 - INFO - Process 4 - Starting testing
+2025-06-06 23:58:00,854 - process_4 - INFO - Process 4 - Task 10/45 completed successfully
+2025-06-06 23:58:00,858 - process_4 - INFO - Process 4 - Task 11/45 - seed: 7, exp: 5way_10shot, lambda: 0.2
+2025-06-06 23:58:01,033 - process_4 - INFO - Process 4 - Starting training
+2025-06-07 02:30:47,896 - process_4 - INFO - Process 4 - Starting testing
+2025-06-07 02:43:55,665 - process_4 - INFO - Process 4 - Task 11/45 completed successfully
+2025-06-07 02:43:55,667 - process_4 - INFO - Process 4 - Task 12/45 - seed: 7, exp: 5way_10shot, lambda: 0.3
+2025-06-07 02:43:55,836 - process_4 - INFO - Process 4 - Starting training
+2025-06-07 05:06:23,888 - process_4 - INFO - Process 4 - Starting testing
+2025-06-07 05:19:43,138 - process_4 - INFO - Process 4 - Task 12/45 completed successfully
+2025-06-07 05:19:43,140 - process_4 - INFO - Process 4 - Task 13/45 - seed: 7, exp: 5way_10shot, lambda: 0.4
+2025-06-07 05:19:43,252 - process_4 - INFO - Process 4 - Starting training
+2025-06-07 08:36:12,090 - process_4 - INFO - Process 4 - Starting testing
+2025-06-07 08:49:31,918 - process_4 - INFO - Process 4 - Task 13/45 completed successfully
+2025-06-07 08:49:31,919 - process_4 - INFO - Process 4 - Task 14/45 - seed: 7, exp: 5way_10shot, lambda: 0.6
+2025-06-07 08:49:32,030 - process_4 - INFO - Process 4 - Starting training
+2025-06-07 11:34:20,252 - process_4 - INFO - Process 4 - Starting testing
+2025-06-07 11:47:42,416 - process_4 - INFO - Process 4 - Task 14/45 completed successfully
+2025-06-07 11:47:42,416 - process_4 - INFO - Process 4 - Task 15/45 - seed: 7, exp: 5way_10shot, lambda: 0.7
+2025-06-07 11:47:42,537 - process_4 - INFO - Process 4 - Starting training
+2025-06-07 16:38:11,632 - process_4 - INFO - Process 4 - Starting testing
+2025-06-07 16:51:12,109 - process_4 - INFO - Process 4 - Task 15/45 completed successfully
+2025-06-07 16:51:12,110 - process_4 - INFO - Process 4 - Task 16/45 - seed: 7, exp: 5way_10shot, lambda: 0.8
+2025-06-07 16:51:12,250 - process_4 - INFO - Process 4 - Starting training
+2025-06-07 20:16:57,188 - process_4 - INFO - Process 4 - Starting testing
+2025-06-07 20:29:52,028 - process_4 - INFO - Process 4 - Task 16/45 completed successfully
+2025-06-07 20:29:52,029 - process_4 - INFO - Process 4 - Task 17/45 - seed: 7, exp: 5way_10shot, lambda: 0.9
+2025-06-07 20:29:52,152 - process_4 - INFO - Process 4 - Starting training
+2025-06-07 23:01:38,734 - process_4 - INFO - Process 4 - Starting testing
+2025-06-07 23:14:25,804 - process_4 - INFO - Process 4 - Task 17/45 completed successfully
+2025-06-07 23:14:25,804 - process_4 - INFO - Process 4 - Task 18/45 - seed: 7, exp: 5way_10shot, lambda: 1.0
+2025-06-07 23:14:25,915 - process_4 - INFO - Process 4 - Starting training
+2025-06-08 03:44:59,136 - process_4 - INFO - Process 4 - Starting testing
+2025-06-08 03:58:00,608 - process_4 - INFO - Process 4 - Task 18/45 completed successfully
+2025-06-08 03:58:00,608 - process_4 - INFO - Process 4 - Task 19/45 - seed: 7, exp: 10way_5shot, lambda: 0.1
+2025-06-08 03:58:00,718 - process_4 - INFO - Process 4 - Starting training
+2025-06-08 12:06:40,360 - process_4 - INFO - Process 4 - Starting testing
+2025-06-08 12:21:33,028 - process_4 - INFO - Process 4 - Task 19/45 completed successfully
+2025-06-08 12:21:33,030 - process_4 - INFO - Process 4 - Task 20/45 - seed: 7, exp: 10way_5shot, lambda: 0.2
+2025-06-08 12:21:33,158 - process_4 - INFO - Process 4 - Starting training
+2025-06-08 17:30:22,403 - process_4 - INFO - Process 4 - Starting testing
+2025-06-08 17:45:19,745 - process_4 - INFO - Process 4 - Task 20/45 completed successfully
+2025-06-08 17:45:19,747 - process_4 - INFO - Process 4 - Task 21/45 - seed: 7, exp: 10way_5shot, lambda: 0.3
+2025-06-08 17:45:19,911 - process_4 - INFO - Process 4 - Starting training
+2025-06-08 21:28:57,296 - process_4 - INFO - Process 4 - Starting testing
+2025-06-08 21:43:49,516 - process_4 - INFO - Process 4 - Task 21/45 completed successfully
+2025-06-08 21:43:49,516 - process_4 - INFO - Process 4 - Task 22/45 - seed: 7, exp: 10way_5shot, lambda: 0.4
+2025-06-08 21:43:49,633 - process_4 - INFO - Process 4 - Starting training
+2025-06-09 02:56:01,408 - process_4 - INFO - Process 4 - Starting testing
+2025-06-09 03:10:45,237 - process_4 - INFO - Process 4 - Task 22/45 completed successfully
+2025-06-09 03:10:45,239 - process_4 - INFO - Process 4 - Task 23/45 - seed: 7, exp: 10way_5shot, lambda: 0.6
+2025-06-09 03:10:45,407 - process_4 - INFO - Process 4 - Starting training
+2025-06-09 08:09:17,095 - process_4 - INFO - Process 4 - Starting testing
+2025-06-09 08:24:26,342 - process_4 - INFO - Process 4 - Task 23/45 completed successfully
+2025-06-09 08:24:26,342 - process_4 - INFO - Process 4 - Task 24/45 - seed: 7, exp: 10way_5shot, lambda: 0.7
+2025-06-09 08:24:26,465 - process_4 - INFO - Process 4 - Starting training
+2025-06-09 13:05:16,705 - process_4 - INFO - Process 4 - Starting testing
+2025-06-09 13:20:27,214 - process_4 - INFO - Process 4 - Task 24/45 completed successfully
+2025-06-09 13:20:27,216 - process_4 - INFO - Process 4 - Task 25/45 - seed: 7, exp: 10way_5shot, lambda: 0.8
+2025-06-09 13:20:27,336 - process_4 - INFO - Process 4 - Starting training
+2025-06-09 16:59:41,205 - process_4 - INFO - Process 4 - Starting testing
+2025-06-09 17:15:05,006 - process_4 - INFO - Process 4 - Task 25/45 completed successfully
+2025-06-09 17:15:05,007 - process_4 - INFO - Process 4 - Task 26/45 - seed: 7, exp: 10way_5shot, lambda: 0.9
+2025-06-09 17:15:05,137 - process_4 - INFO - Process 4 - Starting training
+2025-06-09 20:34:04,187 - process_4 - INFO - Process 4 - Starting testing
+2025-06-09 20:49:23,416 - process_4 - INFO - Process 4 - Task 26/45 completed successfully
+2025-06-09 20:49:23,418 - process_4 - INFO - Process 4 - Task 27/45 - seed: 7, exp: 10way_5shot, lambda: 1.0
+2025-06-09 20:49:23,571 - process_4 - INFO - Process 4 - Starting training
+2025-06-10 01:00:42,932 - process_4 - INFO - Process 4 - Starting testing
+2025-06-10 01:16:02,802 - process_4 - INFO - Process 4 - Task 27/45 completed successfully
+2025-06-10 01:16:02,804 - process_4 - INFO - Process 4 - Task 28/45 - seed: 7, exp: 10way_10shot, lambda: 0.1
+2025-06-10 01:16:02,997 - process_4 - INFO - Process 4 - Starting training
+2025-06-10 03:39:24,543 - process_4 - INFO - Process 4 - Starting testing
+2025-06-10 03:48:18,698 - process_4 - INFO - Process 4 - Task 28/45 completed successfully
+2025-06-10 03:48:18,699 - process_4 - INFO - Process 4 - Task 29/45 - seed: 7, exp: 10way_10shot, lambda: 0.2
+2025-06-10 03:48:18,810 - process_4 - INFO - Process 4 - Starting training
+2025-06-10 07:10:59,144 - process_4 - INFO - Process 4 - Starting testing
+2025-06-10 07:19:58,890 - process_4 - INFO - Process 4 - Task 29/45 completed successfully
+2025-06-10 07:19:58,892 - process_4 - INFO - Process 4 - Task 30/45 - seed: 7, exp: 10way_10shot, lambda: 0.3
+2025-06-10 07:19:58,994 - process_4 - INFO - Process 4 - Starting training
+2025-06-10 09:40:40,152 - process_4 - INFO - Process 4 - Starting testing
+2025-06-10 09:49:37,603 - process_4 - INFO - Process 4 - Task 30/45 completed successfully
+2025-06-10 09:49:37,605 - process_4 - INFO - Process 4 - Task 31/45 - seed: 7, exp: 10way_10shot, lambda: 0.4
+2025-06-10 09:49:37,731 - process_4 - INFO - Process 4 - Starting training
+2025-06-10 13:35:29,575 - process_4 - INFO - Process 4 - Starting testing
+2025-06-10 13:44:26,286 - process_4 - INFO - Process 4 - Task 31/45 completed successfully
+2025-06-10 13:44:26,288 - process_4 - INFO - Process 4 - Task 32/45 - seed: 7, exp: 10way_10shot, lambda: 0.6
+2025-06-10 13:44:26,411 - process_4 - INFO - Process 4 - Starting training
+2025-06-10 19:54:05,918 - process_4 - INFO - Process 4 - Starting testing
+2025-06-10 20:09:15,375 - process_4 - INFO - Process 4 - Task 32/45 completed successfully
+2025-06-10 20:09:15,375 - process_4 - INFO - Process 4 - Task 33/45 - seed: 7, exp: 10way_10shot, lambda: 0.7
+2025-06-10 20:09:15,556 - process_4 - INFO - Process 4 - Starting training
+2025-06-10 20:13:50,682 - process_4 - ERROR - Process 4 error with task (seed=7, exp=10way_10shot, lambda=0.7): DataLoader worker (pid 1585947) is killed by signal: Bus error. It is possible that dataloader's workers are out of shared memory. Please try to raise your shared memory limit.
+2025-06-10 20:13:50,682 - process_4 - ERROR - Process 4 - Exception details: RuntimeError: DataLoader worker (pid 1585947) is killed by signal: Bus error. It is possible that dataloader's workers are out of shared memory. Please try to raise your shared memory limit.
+2025-06-10 20:13:52,884 - process_4 - INFO - Process 4 - Task 34/45 - seed: 7, exp: 10way_10shot, lambda: 0.8
+2025-06-10 20:13:53,129 - process_4 - INFO - Process 4 - Starting training
+2025-06-10 20:14:19,548 - process_4 - ERROR - Process 4 error with task (seed=7, exp=10way_10shot, lambda=0.8): DataLoader worker (pid(s) 1586902) exited unexpectedly
+2025-06-10 20:14:19,548 - process_4 - ERROR - Process 4 - Exception details: RuntimeError: DataLoader worker (pid(s) 1586902) exited unexpectedly
+2025-06-10 20:14:20,625 - process_4 - INFO - Process 4 - Task 35/45 - seed: 7, exp: 10way_10shot, lambda: 0.9
+2025-06-10 20:14:20,844 - process_4 - INFO - Process 4 - Starting training
+2025-06-10 23:32:11,475 - process_4 - INFO - Process 4 - Starting testing
+2025-06-10 23:48:00,707 - process_4 - INFO - Process 4 - Task 35/45 completed successfully
+2025-06-10 23:48:00,708 - process_4 - INFO - Process 4 - Task 36/45 - seed: 7, exp: 10way_10shot, lambda: 1.0
+2025-06-10 23:48:00,832 - process_4 - INFO - Process 4 - Starting training
+2025-06-11 04:31:00,530 - process_4 - INFO - Process 4 - Starting testing
+2025-06-11 04:47:02,758 - process_4 - INFO - Process 4 - Task 36/45 completed successfully
+2025-06-11 04:47:02,759 - process_4 - INFO - Process 4 - Task 37/45 - seed: 10, exp: 5way_5shot, lambda: 0.1
+2025-06-11 04:47:02,873 - process_4 - INFO - Process 4 - Starting training
+2025-06-11 07:00:08,570 - process_4 - INFO - Process 4 - Starting testing
+2025-06-11 07:13:37,549 - process_4 - INFO - Process 4 - Task 37/45 completed successfully
+2025-06-11 07:13:37,551 - process_4 - INFO - Process 4 - Task 38/45 - seed: 10, exp: 5way_5shot, lambda: 0.2
+2025-06-11 07:13:37,723 - process_4 - INFO - Process 4 - Starting training
+2025-06-11 11:01:39,659 - process_4 - INFO - Process 4 - Starting testing
+2025-06-11 11:15:08,899 - process_4 - INFO - Process 4 - Task 38/45 completed successfully
+2025-06-11 11:15:08,900 - process_4 - INFO - Process 4 - Task 39/45 - seed: 10, exp: 5way_5shot, lambda: 0.3
+2025-06-11 11:15:09,096 - process_4 - INFO - Process 4 - Starting training
+2025-06-11 13:54:58,888 - process_4 - INFO - Process 4 - Starting testing
+2025-06-11 14:08:12,954 - process_4 - INFO - Process 4 - Task 39/45 completed successfully
+2025-06-11 14:08:12,956 - process_4 - INFO - Process 4 - Task 40/45 - seed: 10, exp: 5way_5shot, lambda: 0.4
+2025-06-11 14:08:13,072 - process_4 - INFO - Process 4 - Starting training
+2025-06-11 17:55:33,487 - process_4 - INFO - Process 4 - Starting testing
+2025-06-11 18:03:05,761 - process_4 - INFO - Process 4 - Task 40/45 completed successfully
+2025-06-11 18:03:05,763 - process_4 - INFO - Process 4 - Task 41/45 - seed: 10, exp: 5way_5shot, lambda: 0.6
+2025-06-11 18:03:05,893 - process_4 - INFO - Process 4 - Starting training
+2025-06-11 19:29:07,854 - process_4 - INFO - Process 4 - Starting testing
+2025-06-11 19:37:00,896 - process_4 - INFO - Process 4 - Task 41/45 completed successfully
+2025-06-11 19:37:00,896 - process_4 - INFO - Process 4 - Task 42/45 - seed: 10, exp: 5way_5shot, lambda: 0.7
+2025-06-11 19:37:01,024 - process_4 - INFO - Process 4 - Starting training
+2025-06-11 21:06:22,368 - process_4 - INFO - Process 4 - Starting testing
+2025-06-11 21:14:08,078 - process_4 - INFO - Process 4 - Task 42/45 completed successfully
+2025-06-11 21:14:08,078 - process_4 - INFO - Process 4 - Task 43/45 - seed: 10, exp: 5way_5shot, lambda: 0.8
+2025-06-11 21:14:08,186 - process_4 - INFO - Process 4 - Starting training
+2025-06-11 23:01:20,107 - process_4 - INFO - Process 4 - Starting testing
+2025-06-11 23:09:10,161 - process_4 - INFO - Process 4 - Task 43/45 completed successfully
+2025-06-11 23:09:10,161 - process_4 - INFO - Process 4 - Task 44/45 - seed: 10, exp: 5way_5shot, lambda: 0.9
+2025-06-11 23:09:10,273 - process_4 - INFO - Process 4 - Starting training
+2025-06-12 00:36:56,196 - process_4 - INFO - Process 4 - Starting testing
+2025-06-12 00:44:20,699 - process_4 - INFO - Process 4 - Task 44/45 completed successfully
+2025-06-12 00:44:20,701 - process_4 - INFO - Process 4 - Task 45/45 - seed: 10, exp: 5way_5shot, lambda: 1.0
+2025-06-12 00:44:20,813 - process_4 - INFO - Process 4 - Starting training
+2025-06-12 05:11:40,774 - process_4 - INFO - Process 4 - Starting testing
+2025-06-12 05:25:25,392 - process_4 - INFO - Process 4 - Task 45/45 completed successfully
+2025-06-12 05:25:25,504 - process_4 - INFO - Process 4 completed all tasks

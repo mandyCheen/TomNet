@@ -1,0 +1,9 @@
+2025-06-25 12:52:50.780263: 5way_5shot shape '[75, 5]' is invalid for input of size 750
+2025-06-25 12:52:51.305201: 5way_10shot shape '[50, 5]' is invalid for input of size 500
+2025-06-25 12:52:51.838439: 10way_5shot shape '[150, 10]' is invalid for input of size 3000
+2025-06-25 12:52:52.384994: 10way_10shot shape '[100, 10]' is invalid for input of size 2000
+2025-06-25 12:52:52.787921: 5way_5shot shape '[75, 5]' is invalid for input of size 750
+2025-06-25 12:52:53.248159: 5way_10shot shape '[50, 5]' is invalid for input of size 500
+2025-06-25 12:52:53.870646: 10way_5shot shape '[150, 10]' is invalid for input of size 3000
+2025-06-25 12:52:54.445740: 10way_10shot shape '[100, 10]' is invalid for input of size 2000
+2025-06-25 12:52:54.966924: 5way_5shot shape '[75, 5]' is invalid for input of size 750

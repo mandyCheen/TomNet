@@ -1,0 +1,82 @@
+{
+    "dataset": {
+        "pack_filter": "diec",
+        "cpu_arch": "x86_64",
+        "reverse_tool": "ghidra",
+        "raw": "malware_diec_ghidra_x86_64_fcg_dataset.csv",
+        "split_by_cpu": false,
+        "addition_note": "baseline",
+        "pretrain_family": [
+            "gafgyt",
+            "ngioweb",
+            "mirai",
+            "tsunami"
+        ]
+    },
+    "pretrain": {
+        "name": "x86_pretrained_3layer_GraphSAGE",
+        "use": true,
+        "raw_dataset": "malware_diec_ghidra_x86_64_fcg_pretrain_dataset.csv",
+        "batch_size": 128
+    },
+    "settings": {
+        "name": "test_para",
+        "model": {
+            "model_name": "GraphSAGE",
+            "input_size": 128,
+            "hidden_size": 128,
+            "output_size": 128,
+            "num_layers": 3,
+            "load_weights": "",
+            "pretrained_model_folder": ""
+        },
+        "train": {
+            "training": true,
+            "validation": true,
+            "num_epochs": 500,
+            "device": "cuda:0",
+            "parallel": true,
+            "parallel_device": [0, 1, 2, 3],
+            "iterations": 100,
+            "lr": 0.01,
+            "projection_lr": 0.01,
+            "lr_scheduler": {
+                "use": true,
+                "method": "ReduceLROnPlateau",
+                "step_size": 20,
+                "gamma": 0.5,
+                "patience": 10,
+                "factor": 0.5,
+                "min_lr": 0.0001,
+                "cooldown": 0
+            },
+            "early_stopping": {
+                "use": true,
+                "patience": 20
+            },
+            "loss": "CrossEntropyLoss",
+            "distance": "",
+            "optimizer": "Adam",
+            "save_model": true
+        },
+        "vectorize": {
+            "node_embedding_method": "word2vec",
+            "node_embedding_size": 128,
+            "num_workers": 4
+        },
+        "seed": 42
+    },
+    "paths": {
+        "data": {
+            "fcg_dataset": "../dataset/data_ghidra_fcg",
+            "csv_folder": "../dataset/raw_csv",
+            "split_folder": "../dataset/split",
+            "embedding_folder": "../embeddings",
+            "pretrain_dataset": "../dataset/data_ghidra_fcg_pretrain"
+        },
+        "model": {
+            "model_folder": "../checkpoints",
+            "pretrained_folder": "../pretrained"
+        }
+    }
+}

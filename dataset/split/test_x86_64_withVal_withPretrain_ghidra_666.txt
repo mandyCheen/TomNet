@@ -1,0 +1,10 @@
+pkexecexploit
+sliver
+wacatac
+elfpatch
+ebury
+kinsing
+mobidash
+skidmap
+connectback
+merlin

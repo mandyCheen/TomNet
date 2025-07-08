@@ -1,0 +1,10 @@
+pkexecexploit
+skidmap
+aenjaris
+fakeapp
+blueshell
+sliver
+multiverze
+merlin
+revproxy
+fscan

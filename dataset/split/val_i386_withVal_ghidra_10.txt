@@ -1,0 +1,10 @@
+sotdas
+meterpreter
+grip
+mettle
+netwiredrc
+epoll
+rkit
+sshbrute
+regon
+telf

@@ -1,0 +1,10 @@
+sotdas
+meterpreter
+dnscat
+sshdkit
+patpooty
+mobidash
+netwiredrc
+pancar
+pupy
+lockbit
