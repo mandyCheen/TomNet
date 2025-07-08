@@ -4,24 +4,11 @@
         "cpu_arch": "x86_64",
         "reverse_tool": "ghidra",
         "raw": "malware_diec_ghidra_x86_64_fcg_dataset.csv",
-        "split_by_cpu": false,
         "addition_note": "openset",
         "openset": true,
         "openset_raw": "malware_diec_ghidra_x86_64_fcg_openset_dataset_rm0node.csv",
         "openset_data_mode": "random",
-        "openset_data_ratio": 0.2,
-        "pretrain_family": [
-            "gafgyt",
-            "ngioweb",
-            "mirai",
-            "tsunami"
-        ]
-    },
-    "pretrain": {
-        "name": "x86_pretrained",
-        "use": true,
-        "raw_dataset": "malware_diec_ghidra_x86_64_fcg_pretrain_dataset.csv",
-        "batch_size": 128
+        "openset_data_ratio": 0.2
     },
     "settings": {
         "name": "5way_10shot_LabelPropagation_alpha0.7_k20_gcn_lambda1.0",
