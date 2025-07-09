@@ -1,30 +1,26 @@
 {
     "dataset": {
         "pack_filter": "diec",
-        "cpu_arch": "arm",
+        "cpu_arch": "x86_64",
         "reverse_tool": "ghidra",
-        "raw": "malware_diec_ghidra_arm_fcg_dataset.csv",
-        "split_by_cpu": false,
+        "raw": "malware_diec_ghidra_x86_64_fcg_dataset.csv",
         "addition_note": "openset",
         "openset": true,
-        "openset_raw": "malware_diec_ghidra_arm_fcg_openset_dataset.csv",
+        "openset_raw": "malware_diec_ghidra_x86_64_fcg_openset_dataset_rm0node.csv",
         "openset_data_mode": "random",
         "openset_data_ratio": 0.2
     },
-    "pretrain": {
-        "use": false
-    },
     "settings": {
-        "name": "10way_10shot_SoftNnNet_gcn",
+        "name": "5way_5shot_LabelPropagation_gcn",
+        "seed": 42,
         "model": {
             "model_name": "GCN",
             "input_size": 128,
             "hidden_size": 256,
             "output_size": 128,
             "num_layers": 3,
-            "projection": true,
-            "load_weights": "",
-            "pretrained_model_folder": ""
+            "projection": false,
+            "load_weights": ""
         },
         "train": {
             "training": true,
@@ -56,21 +52,32 @@
             "save_model": true
         },
         "few_shot": {
-            "method": "SoftNnNet",
+            "method": "LabelPropagation",
             "train": {
-                "support_shots": 10,
-                "query_shots": 10,
-                "class_per_iter": 10
+                "use": true,
+                "support_shots": 5,
+                "query_shots": 15,
+                "class_per_iter": 5
             },
             "test": {
-                "support_shots": 10,
-                "query_shots": 10,
-                "class_per_iter": 10
+                "support_shots": 5,
+                "query_shots": 15,
+                "class_per_iter": 5
+            },
+            "parameters": {
+                "relation_layer": 2,
+                "relation_model": "GCN",
+                "dim_in": 128,
+                "dim_hidden": 64,
+                "dim_out": 32,
+                "rn": 300,
+                "alpha": 0.7,
+                "k": 20
             }
         },
         "openset": {
             "train": {
-                "use": false,
+                "use": true,
                 "m_samples": 20,
                 "class_per_iter": 5,
                 "loss_weight": 0.5
@@ -85,8 +92,7 @@
             "node_embedding_method": "word2vec",
             "node_embedding_size": 128,
             "num_workers": 4
-        },
-        "seed": 7
+        }
     },
     "paths": {
         "data": {
@@ -94,12 +100,10 @@
             "csv_folder": "./dataset/raw_csv",
             "split_folder": "./dataset/split",
             "embedding_folder": "./embeddings",
-            "pretrain_dataset": "./dataset/data_ghidra_fcg_pretrain",
             "openset_dataset": "./dataset/data_ghidra_fcg_openset"
         },
         "model": {
-            "model_folder": "./checkpoints",
-            "pretrained_folder": "./pretrained"
+            "model_folder": "../checkpoints"
         }
     }
 }

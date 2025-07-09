@@ -1,8 +1,6 @@
 __pycache__/
 */__pycache__/
 **/__pycache__/
-data_r2_5_9_4_fcg
-data_ghidra_fcg*
 embeddings
 archives
 *_checkpoint.pth

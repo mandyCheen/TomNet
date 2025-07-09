@@ -8,12 +8,9 @@ import sklearn.preprocessing as labelEncoder
 import torch
 
 class FCGVectorize():
-    def __init__(self, opt: dict, dataset: LoadDataset, pretrain: bool = False):
+    def __init__(self, opt: dict, dataset: LoadDataset):
         self.nodeEmbedding = opt["settings"]["vectorize"]["node_embedding_method"]
-        if pretrain:
-            self.data_root = opt["paths"]["data"]["pretrain_dataset"]
-        else:
-            self.data_root = opt["paths"]["data"]["fcg_dataset"]
+        self.data_root = opt["paths"]["data"]["fcg_dataset"]
         self.trainDataset = dataset.trainData
         self.testDataset = dataset.testData 
         self.valDataset = dataset.valData

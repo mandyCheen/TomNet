@@ -2,7 +2,6 @@
 import pandas as pd
 import numpy as np
 import os
-from sklearn.model_selection import train_test_split
 
 class LoadDataset:
     def __init__(self, opt: dict):
@@ -12,10 +11,8 @@ class LoadDataset:
             self.cpuArch = opt["dataset"]["cpu_arch"]
             self.datasetSplitFolder = opt["paths"]["data"]["split_folder"]
             self.val = opt["settings"]["train"]["validation"]
-            self.splitByCpu = opt["dataset"]["split_by_cpu"]
             self.reverseTool = opt["dataset"]["reverse_tool"]
             val = "_withVal" if self.val else ""
-            self.familyCpuList = self.rawDataset.groupby("family")["CPU"].unique().to_dict()
             self.datasetName = f"{self.cpuArch}{val}_{self.reverseTool}_{self.seed}"
             self.trainData, self.testData, self.valData = self.load_all_datasets()
             ## openset

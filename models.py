@@ -9,8 +9,6 @@ import numpy as np
 import pickle
 import torch.nn as nn
 
-#TODO: projection dimension bug
-
 class GCN(torch.nn.Module):
     def __init__(self, dim_in: int, dim_h: int, dim_out: int, num_layers: int, projection: bool = False):
         super().__init__()
@@ -24,10 +22,15 @@ class GCN(torch.nn.Module):
         self.gcn_convs.append(GCNConv(dim_in, dim_h))
         self.norms.append(BatchNorm1d(dim_h))
         
-        # Additional layers
-        for _ in range(num_layers - 1):
-            self.gcn_convs.append(GCNConv(dim_h, dim_h))
-            self.norms.append(BatchNorm1d(dim_h))
+        # Additional layers - modify last layer based on projection
+        for i in range(num_layers - 1):
+            if i == num_layers - 2 and not projection:
+                # Last layer outputs dim_out when no projection
+                self.gcn_convs.append(GCNConv(dim_h, dim_out))
+                self.norms.append(BatchNorm1d(dim_out))
+            else:
+                self.gcn_convs.append(GCNConv(dim_h, dim_h))
+                self.norms.append(BatchNorm1d(dim_h))
 
         if projection:
             self.output_proj = nn.Sequential(
@@ -72,9 +75,14 @@ class GraphSAGE(torch.nn.Module):
         self.norms.append(BatchNorm1d(dim_h))
         
         # Additional layers
-        for _ in range(num_layers - 1):
-            self.sage_convs.append(SAGEConv(dim_h, dim_h))
-            self.norms.append(BatchNorm1d(dim_h))
+        for i in range(num_layers - 1):
+            if i == num_layers - 2 and not projection:
+                # Last layer outputs dim_out when no projection
+                self.sage_convs.append(SAGEConv(dim_h, dim_out))
+                self.norms.append(BatchNorm1d(dim_out))
+            else:
+                self.sage_convs.append(SAGEConv(dim_h, dim_h))
+                self.norms.append(BatchNorm1d(dim_h))
 
         if projection:
             self.output_proj = nn.Sequential(
@@ -119,9 +127,15 @@ class GIN(torch.nn.Module):
         self.norms.append(BatchNorm1d(dim_h))
         
         # Additional layers
-        for _ in range(num_layers - 1):
-            self.gin_convs.append(GINConv(Sequential(Linear(dim_h, dim_h), ReLU(), Linear(dim_h, dim_h))))
-            self.norms.append(BatchNorm1d(dim_h))
+        for i in range(num_layers - 1):
+            if i == num_layers - 2 and not projection:
+                # Last layer outputs dim_out when no projection
+                self.gin_convs.append(GINConv(Sequential(Linear(dim_h, dim_out), ReLU(), Linear(dim_out, dim_out))))
+                self.norms.append(BatchNorm1d(dim_out))
+            else:
+                # Other layers maintain the same hidden dimension
+                self.gin_convs.append(GINConv(Sequential(Linear(dim_h, dim_h), ReLU(), Linear(dim_h, dim_h))))
+                self.norms.append(BatchNorm1d(dim_h))
 
         if projection:
             self.output_proj = nn.Sequential(
@@ -187,7 +201,7 @@ class GraphClassifier(torch.nn.Module):
             raise ValueError(f"Unsupported backbone type: {backbone_type}")
 
         self.classifier = nn.Sequential(
-            Linear(backbone_dim_h, hidden_dim),
+            Linear(backbone_dim_out, hidden_dim),
             BatchNorm1d(hidden_dim),
             nn.ReLU(),
             nn.Dropout(dropout),

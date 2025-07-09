@@ -19,8 +19,8 @@ if __name__ == '__main__':
     
     dataset = LoadDataset(options)
     
-    # vectorize = FCGVectorize(options, dataset)
-    # vectorize.node_embedding(dataset.rawDataset)
+    vectorize = FCGVectorize(options, dataset)
+    vectorize.node_embedding(dataset.rawDataset)
     
     train = TrainModule(options, dataset)
     errorPath = train.model_folder + "/error.txt"

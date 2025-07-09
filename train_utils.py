@@ -64,13 +64,12 @@ class Training:
         self.device = device
 
         self.epochs = opt["settings"]["train"]["num_epochs"]
-        # iterations for plotting = number of epochs * iterations
         self.iterations = list(range(self.epochs * opt["settings"]["train"]["iterations"]))
         self.save_model = opt["settings"]["train"]["save_model"]
         self.early_stopping = opt["settings"]["train"]["early_stopping"]["use"]
         self.early_stopping_patience = opt["settings"]["train"]["early_stopping"]["patience"]
 
-        self.enable_openset = opt.get("settings", {}).get("openset", {}).get("train", {}).get("use", False)
+        self.enable_openset_training = opt.get("settings", {}).get("openset", {}).get("train", {}).get("use", False)
 
         self.model_folder = model_path     
         os.makedirs(self.model_folder, exist_ok=True)   
@@ -206,15 +205,15 @@ class Training:
                     pbar.set_postfix({
                         'loss': f'{loss.item():.4f}',
                         'acc': f'{acc.item():.4f}',
-                        'openset_auc': f'{self.model.openset_auroc:.4f}' if self.enable_openset else 'N/A'
+                        'openset_auc': f'{self.model.openset_auroc:.4f}' if self.enable_openset_training else 'N/A'
                     })
                     train_loss.append(loss.item())
                     train_acc.append(acc.item()) 
-                    if self.enable_openset:
+                    if self.enable_openset_training:
                         train_auc.append(self.model.openset_auroc)
                 avg_loss = np.mean(train_loss)
                 avg_acc = np.mean(train_acc)
-                if self.enable_openset:
+                if self.enable_openset_training:
                     avg_auc = np.mean(train_auc)
                 postfix = ' (Best)' if avg_acc >= best_train_acc else f' (Best: {best_train_acc:.4f})'
                 # postfix = ' (Lowest)' if avg_loss <= lowest_train_loss else f' (Lowest: {lowest_train_loss:.4f})'
@@ -226,7 +225,7 @@ class Training:
                 #     lowest_train_loss = avg_loss
                 print(content)
                 record_log(self.log_file, f"Epoch {epoch+1}/{self.epochs}: {content}\n")
-                if self.enable_openset:
+                if self.enable_openset_training:
                     record_log(self.log_file, 'Open-Set AUROC: {:.4f}\n'.format(avg_auc))
                 
             if self.valLoader is not None: 
@@ -236,7 +235,7 @@ class Training:
                         data = data.to(self.device)
                         with torch.no_grad():
                             if self.opt["settings"]["few_shot"]["method"] in ("LabelPropagation", "RelationNetwork", "MAML"):
-                                loss, acc = self.model(data, opensetTesting=self.enable_openset)
+                                loss, acc = self.model(data, opensetTesting=self.enable_openset_training)
                             else:
                                 model_output = self.model(data)
                                 loss, acc = self.loss_fn(model_output, data.y)
@@ -247,11 +246,11 @@ class Training:
                         pbar.set_postfix({
                             'loss': f'{loss.item():.4f}',
                             'acc': f'{acc.item():.4f}',
-                            'openset_auc': f'{self.model.openset_auroc:.4f}' if self.enable_openset else 'N/A'
+                            'openset_auc': f'{self.model.openset_auroc:.4f}' if self.enable_openset_training else 'N/A'
                         })
                     avg_loss = np.mean(val_loss)
                     avg_acc = np.mean(val_acc)
-                    if self.enable_openset:
+                    if self.enable_openset_training:
                         avg_auc = np.mean(val_auc)
                     postfix = ' (Best)' if avg_acc >= best_val_acc else f' (Best: {best_val_acc:.4f})'
                     # postfix = ' (Lowest)' if avg_loss <= lowest_val_loss else f' (Lowest: {lowest_val_loss:.4f})'
@@ -259,96 +258,13 @@ class Training:
                     # content = f'Avg Val Loss: {avg_loss:.4f}{postfix}, Avg Val Acc: {avg_acc:.4f}'
                     print(content)
                     record_log(self.log_file, f"Epoch {epoch+1}/{self.epochs}: {content}\n")
-                    if self.enable_openset:
+                    if self.enable_openset_training:
                         record_log(self.log_file, 'Open-Set AUROC: {:.4f}\n'.format(avg_auc))
                     best_val_acc, patience, stop = self.end_of_epoch(avg_acc, best_val_acc, epoch, patience, avg_loss)
                     # lowest_val_loss, patience, stop = self.end_of_epoch_loss(avg_loss, lowest_val_loss, epoch, patience)
             else:
                 best_train_acc, patience, stop = self.end_of_epoch(avg_acc, best_train_acc, epoch, patience, avg_loss)
                 # lowest_train_loss, patience, stop = self.end_of_epoch_loss(avg_loss, lowest_train_loss, epoch, patience)
-            if stop:
-                break
-        return True
-    
-    def run_pretrain(self):
-        best_train_acc = 0
-        best_val_acc = 0
-        lowest_train_loss = 1000
-        lowest_val_loss = 1000
-        patience = 0
-        stop = False
-        # save config
-        save_config(self.opt, self.model_folder + "/config.json")
-        # save model architecture
-        save_model_architecture(self.model, self.model_folder + "/model_architecture.txt")
-
-        for epoch in range(self.epochs):
-            self.model.train()
-            train_loss = []
-            train_acc = []
-            val_loss = []
-            val_acc = []
-            with tqdm(self.trainLoader, desc=f"Epoch {epoch+1}/{self.epochs} (Training)") as pbar:
-                for data in pbar:
-                    self.optim.zero_grad()
-                    data = data.to(self.device)
-                    predicts = self.model(data)
-                    loss = self.loss_fn(predicts, data.y)
-                    acc = torch.sum(torch.argmax(predicts, dim=1) == data.y) / len(data.y)              
-                    loss.backward()
-                    self.optim.step()   
-                    
-                    self.train_acc_history.append(acc.item())
-                    # Update progress bar with current batch metrics
-                    pbar.set_postfix({
-                        'loss': f'{loss.item():.4f}',
-                        'acc': f'{acc.item():.4f}',
-                    })
-                    train_loss.append(loss.item())
-                    train_acc.append(acc.item()) 
-                avg_loss = np.mean(train_loss)
-                avg_acc = np.mean(train_acc)
-                postfix = ' (Best)' if avg_acc >= best_train_acc else f' (Best: {best_train_acc:.4f})'
-                # postfix = ' (Lowest)' if avg_loss <= lowest_train_loss else f' (Lowest: {lowest_train_loss:.4f})'
-                content = f'Avg Train Loss: {avg_loss:.4f}, Avg Train Acc: {avg_acc:.4f}{postfix}'
-                # content = f'Avg Train Loss: {avg_loss:.4f}{postfix}, Avg Train Acc: {avg_acc:.4f}'
-                if self.valLoader is not None and avg_acc >= best_train_acc:
-                    best_train_acc = avg_acc
-                # if self.valLoader is not None and avg_loss <= lowest_train_loss:
-                #     lowest_train_loss = avg_loss
-                print(content)
-                record_log(self.log_file, f"Epoch {epoch+1}/{self.epochs}: {content}\n")
-
-            if self.valLoader is not None: 
-                self.model.eval()                
-                with tqdm(self.valLoader, desc=f"Epoch {epoch+1}/{self.epochs} (Validation)") as pbar:
-                    for data in pbar:
-                        data = data.to(self.device)
-                        with torch.no_grad():
-                            model_output = self.model(data)
-                        loss= self.loss_fn(model_output, data.y)
-                        acc = torch.sum(torch.argmax(model_output, dim=1) == data.y) / len(data.y)
-                        val_loss.append(loss.item())
-                        val_acc.append(acc.item())
-                        self.val_acc_history.append(acc.item())
-                        # Update progress bar with current batch metrics
-                        pbar.set_postfix({
-                            'loss': f'{loss.item():.4f}',
-                            'acc': f'{acc.item():.4f}',
-                        })
-                    avg_loss = np.mean(val_loss)
-                    avg_acc = np.mean(val_acc)
-                    postfix = ' (Best)' if avg_acc >= best_val_acc else f' (Best: {best_val_acc:.4f})'
-                    # postfix = ' (Lowest)' if avg_loss <= lowest_val_loss else f' (Lowest: {lowest_val_loss:.4f})'
-                    content = f'Avg Val Loss: {avg_loss:.4f}, Avg Val Acc: {avg_acc:.4f}{postfix}'
-                    # content = f'Avg Val Loss: {avg_loss:.4f}{postfix}, Avg Val Acc: {avg_acc:.4f}'
-                    print(content)
-                    record_log(self.log_file, f"Epoch {epoch+1}/{self.epochs}: {content}\n")
-                    best_val_acc, patience, stop = self.end_of_epoch_pretrain(avg_acc, best_val_acc, epoch, patience, avg_loss)
-                    # lowest_val_loss, patience, stop = self.end_of_epoch_loss(avg_loss, lowest_val_loss, epoch, patience, backbone)
-            else:
-                best_train_acc, patience, stop = self.end_of_epoch_pretrain(avg_acc, best_train_acc, epoch, patience, avg_loss)
-                # lowest_train_loss, patience, stop = self.end_of_epoch_loss(avg_loss, lowest_train_loss, epoch, patience, backbone)
             if stop:
                 break
         return True
