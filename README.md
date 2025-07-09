@@ -16,20 +16,23 @@ TomNet/
 ├── config/
 │   └── config.json              # Configuration file
 ├── preprocessing/
-│   └── genGpickle.py           # FCG preprocessing utilities
-├── dataset/                     # Dataset storage (to be created)
+│   └── genGpickle.py            # FCG preprocessing utilities
+├── dataset/                     # Dataset storage
+│   ├── raw_csv                  # CSV metadata files
+│   └── split                    # Data split files (auto-generated)
 ├── embeddings/                  # Node embeddings storage (auto-generated)
 ├── checkpoints/                 # Model checkpoints (auto-generated)
-├── RunTraining.py              # Training script
-├── RunEval.py                  # Evaluation script
-├── loadDataset.py              # Dataset loading utilities
-├── fcgVectorize.py             # Node embedding generation
-├── trainModule.py              # Training and testing modules
-├── models.py                   # Graph neural network models
-├── loss.py                     # Loss functions for few-shot learning
-├── dataset.py                  # Custom samplers for few-shot learning
-├── train_utils.py              # Training utilities
-└── utils.py                    # General utilities
+├── RunTraining.py               # Training script
+├── RunEval.py                   # Evaluation script
+└── scripts
+    ├── loadDataset.py               # Dataset loading utilities
+    ├── fcgVectorize.py              # Node embedding generation
+    ├── trainModule.py               # Training and testing modules
+    ├── models.py                    # Graph neural network models
+    ├── loss.py                      # Loss functions for few-shot learning
+    ├── dataset.py                   # Custom samplers for few-shot learning
+    ├── train_utils.py               # Training utilities
+    └── utils.py                     # General utilities
 ```
 
 ## Installation
@@ -53,34 +56,38 @@ pip install tqdm
 
 ## Quick Start
 
-1. Data Preparation
+### 1. Data Preparation
+
 **Dataset Structure**
+
 TomNet requires a specific directory structure for FCG data and CSV metadata files:
+
 ```
 dataset/
 ├── raw_csv/                                    # CSV metadata files
 │   ├── malware_diec_ghidra_x86_64_fcg_dataset.csv
 │   └── malware_diec_ghidra_x86_64_fcg_openset_dataset.csv
-├── data_ghidra_fcg/                           # Main FCG dataset name
+├── {dataset_name}/                           # Main FCG dataset name
 │   └── {CPU}/                                 # CPU architecture (e.g., Advanced Micro Devices X86-64)
 │       └── {family}/                          # Malware family name (e.g., adore)
 │           ├── sample1.gpickle               # FCG files in NetworkX format
 │           ├── sample2.gpickle
 │           └── ...
-├── data_ghidra_fcg_openset/                   # Open-set FCG dataset name
+├── {dataset_name_openset}/                   # Open-set FCG dataset name
 │   └── {CPU}/                                 # Same structure as main dataset
 │       └── {family}/
 │           ├── openset_sample1.gpickle
 │           └── ...
-├── split/                                     # Data split files (auto-generated)
-│   ├── train_{datasetName}.txt
-│   ├── test_{datasetName}.txt
-│   └── val_{datasetName}.txt
-└── embeddings/                                # Node embeddings (auto-generated)
-    └── {datasetName}/
-        └── word2vec/
-            ├── opcode2vec.model
-            └── ...
+└── split/                                     # Data split files (auto-generated)
+    ├── train_{dataset_name}.txt
+    ├── test_{dataset_name}.txt
+    └── val_{dataset_name}.txt
+
+embeddings/                                # Node embeddings (auto-generated)
+└── {dataset_name}/
+    └── word2vec/
+        ├── opcode2vec.model
+        └── ...
 ```
 
 **CSV File Format**
@@ -94,6 +101,7 @@ Place your FCG dataset CSV files in the `dataset/raw_csv/` directory. The CSV sh
 For open-set scenarios, prepare an additional openset dataset CSV.
 
 **FCG Files**
+
 Each FCG file should be:
 
 Format: NetworkX graph saved as .gpickle
@@ -106,7 +114,7 @@ Example FCG node structure:
 fcg.nodes[node_id]['x'] = ['push', 'mov', 'call', 'ret']  # Opcode sequence
 ```
 
-2. Configuration
+### 2. Configuration
 
 Edit `config/config.json` to customize your experiment:
 
@@ -146,13 +154,13 @@ Edit `config/config.json` to customize your experiment:
 }
 ```
 
-3. Training
+### 3. Training
 
 ```
 python RunTraining.py --config config/config.json
 ```
 
-4. Evaluation
+### 4. Evaluation
 
 ```
 python RunEval.py --config path/to/saved/config.json
@@ -247,19 +255,35 @@ The Label Propagation method uses several key parameters in the `few_shot.parame
 TomNet supports open-set scenarios where test samples may belong to classes not seen during training:
 
 ```
-"openset": {
-    "train": {
-        "use": true,
-        "m_samples": 20,
-        "class_per_iter": 5,
-        "loss_weight": 0.5
+    "dataset": {
+        "pack_filter": "diec",
+        "cpu_arch": "x86_64",
+        "reverse_tool": "ghidra",
+        "raw": "malware_diec_ghidra_x86_64_fcg_dataset.csv",
+        "addition_note": "openset",
+        "openset": true, # enable loading openset data & vectorizing openset data
+        "openset_raw": "malware_diec_ghidra_x86_64_fcg_openset_dataset_rm0node.csv",
+        "openset_data_mode": "random",
+        "openset_data_ratio": 0.2
     },
-    "test": {
-        "use": true,
-        "m_samples": 50,
-        "class_per_iter": 5
+    "settings": {
+        ...
+        "openset": {
+            "train": {
+                "use": true, # enable openset training
+                "m_samples": 20,
+                "class_per_iter": 5,
+                "loss_weight": 0.5
+            },
+            "test": {
+                "use": true, # enable openset testing
+                "m_samples": 50,
+                "class_per_iter": 5
+            }
+        },
+        ...
     }
-}
+    ...
 ```
 The framework uses entropy-based losses and AUROC metrics for open-set evaluation with Label Propagation.
 

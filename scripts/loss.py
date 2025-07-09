@@ -5,7 +5,7 @@ from torch.autograd import grad
 from collections import OrderedDict
 import numpy as np
 from torch.nn import Linear, Sequential, BatchNorm1d, ReLU, Dropout
-from models import GraphRelationNetwork, MLPRelationModule
+from scripts.models import GraphRelationNetwork, MLPRelationModule
 from torch_geometric.nn import global_add_pool
 import copy
 from torch_geometric.data import Data, Batch

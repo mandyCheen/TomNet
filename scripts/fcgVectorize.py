@@ -1,4 +1,4 @@
-from loadDataset import LoadDataset
+from scripts.loadDataset import LoadDataset
 import pandas as pd
 from tqdm import tqdm
 import pickle

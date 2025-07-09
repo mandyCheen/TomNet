@@ -7,7 +7,6 @@ import pandas as pd
 import pickle
 from torch_geometric.utils.convert import from_networkx
 import sklearn.preprocessing as labelEncoder
-from datetime import datetime
 
 def load_GE_data(dataset: pd.DataFrame, embeddingFolder: str, embeddingSize: int, dataPath: str, openset: bool = False, opensetInfo: str = None):
     if not os.path.exists(dataPath):
