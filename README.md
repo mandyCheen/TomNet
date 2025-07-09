@@ -54,6 +54,36 @@ pip install tqdm
 ## Quick Start
 
 1. Data Preparation
+**Dataset Structure**
+TomNet requires a specific directory structure for FCG data and CSV metadata files:
+```
+dataset/
+├── raw_csv/                                    # CSV metadata files
+│   ├── malware_diec_ghidra_x86_64_fcg_dataset.csv
+│   └── malware_diec_ghidra_x86_64_fcg_openset_dataset.csv
+├── data_ghidra_fcg/                           # Main FCG dataset name
+│   └── {CPU}/                                 # CPU architecture (e.g., Advanced Micro Devices X86-64)
+│       └── {family}/                          # Malware family name (e.g., adore)
+│           ├── sample1.gpickle               # FCG files in NetworkX format
+│           ├── sample2.gpickle
+│           └── ...
+├── data_ghidra_fcg_openset/                   # Open-set FCG dataset name
+│   └── {CPU}/                                 # Same structure as main dataset
+│       └── {family}/
+│           ├── openset_sample1.gpickle
+│           └── ...
+├── split/                                     # Data split files (auto-generated)
+│   ├── train_{datasetName}.txt
+│   ├── test_{datasetName}.txt
+│   └── val_{datasetName}.txt
+└── embeddings/                                # Node embeddings (auto-generated)
+    └── {datasetName}/
+        └── word2vec/
+            ├── opcode2vec.model
+            └── ...
+```
+
+**CSV File Format**
 
 Place your FCG dataset CSV files in the `dataset/raw_csv/` directory. The CSV should contain columns:
 
@@ -62,6 +92,19 @@ Place your FCG dataset CSV files in the `dataset/raw_csv/` directory. The CSV sh
 - `CPU`: CPU architecture (e.g., x86_64)
 
 For open-set scenarios, prepare an additional openset dataset CSV.
+
+**FCG Files**
+Each FCG file should be:
+
+Format: NetworkX graph saved as .gpickle
+Location: dataset/{dataset_name}/{CPU}/{family}/{file_name}.gpickle
+Node attributes: Each node should have an `'x'` attribute containing opcode sequences
+
+Example FCG node structure:
+```
+# Node attributes in NetworkX graph
+fcg.nodes[node_id]['x'] = ['push', 'mov', 'call', 'ret']  # Opcode sequence
+```
 
 2. Configuration
 
@@ -114,6 +157,18 @@ python RunTraining.py --config config/config.json
 ```
 python RunEval.py --config path/to/saved/config.json
 ```
+
+## Data Preprocessing
+If you have raw FCG data from reverse engineering tools (like Ghidra), use the preprocessing script:
+```
+# Edit the paths in preprocessing/genGpickle.py
+python preprocessing/genGpickle.py
+```
+The script expects:
+
+Input: Raw FCG files (.dot and .json format)
+Output: Processed .gpickle files with opcode attributes
+
 
 ## Label Propagation Method
 Label Propagation is the primary few-shot learning method in TomNet, which leverages graph structure for semi-supervised learning. The method works by:
