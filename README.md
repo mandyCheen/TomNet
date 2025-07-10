@@ -301,7 +301,7 @@ Training results are saved to:
 python RunTraining.py --config config/closedset_config.json
 
 # Evaluate
-python RunEval.py --config checkpoints/experiment/config.json
+python RunEval.py --config checkpoints/{dataset_name}/{experiment_name}/config.json
 ```
 ### Open-Set Recognition
 ```
@@ -309,7 +309,7 @@ python RunEval.py --config checkpoints/experiment/config.json
 python RunTraining.py --config config/openset_config.json
 
 # Evaluate with open-set testing
-python RunEval.py --config checkpoints/experiment/config.json
+python RunEval.py --config checkpoints/{dataset_name}/{experiment_name}/config.json
 ```
 
 ## Citation
