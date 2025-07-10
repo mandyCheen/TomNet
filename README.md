@@ -1,5 +1,5 @@
-# TomNet: Few-Shot Learning for Function Call Graph Analysis
-A comprehensive framework for few-shot learning on Function Call Graphs (FCGs), specifically designed for malware detection and classification tasks.
+# TomNet: Few-Shot IoT Malware Classification via Open-Set Aware Transductive Meta-Learning
+TomNet is a framework designed for few-shot learning in IoT malware classification, focusing on open-set recognition scenarios. It utilizes graph neural networks (GNNs) and label propagation methods to effectively classify malware families with limited labeled data.
 
 ## Features
 
